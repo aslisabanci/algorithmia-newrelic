@@ -12,7 +12,7 @@ Our algorithm owner would also like to observe their model's operational metrics
 
 ## Input data
 
-`data` folder contains a set of 25K records:
+`data` folder contains a set of inputs to simulate load:
 - `all.csv`: 25k records, as a mix of applications to be approved+rejected
 - `reject.csv`: 5k records of applications to be rejected
 - `approve.csv`: 20k records of applications to be approved
