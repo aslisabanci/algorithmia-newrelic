@@ -90,6 +90,18 @@ This will only send credit card application requests that the algorithm will rej
 To normalize the stats, run `python3 load.py approve`
 This will only send credit card application requests that the algorithm will approve.
 
+```
+❯ python3 load.py -h                                  
+usage: load.py [-h] [-s S] [-v V] [-home HOME] [-phone PHONE]
+
+optional arguments:
+  -h, --help    show this help message and exit
+  -s S          Data segment to use:all, approve or reject
+  -v V          Algorithm version to call
+  -home HOME    Sets owns_home input feature to 1 or 0
+  -phone PHONE  Sets has_work_phone input feature to 1 or 0
+```
+
 
 ## Requirements
 - algorithmia --> `pip install algorithmia`

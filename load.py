@@ -7,19 +7,25 @@ argparser.add_argument(
     "-s",
     action="store",
     default="all",
-    help="Data segment to use:all, approve or reject",
+    help="Data segment to use:all, approve or reject. Defaults to all",
 )
 argparser.add_argument(
-    "-v", action="store", default="0.1.1", help="Algorithm version to call"
+    "-v",
+    action="store",
+    default="0.1.1",
+    help="Algorithm version to call. Defaults to 0.1.1",
 )
 argparser.add_argument(
-    "-home", action="store", default=None, help="Sets owns_home input feature to 1 or 0"
+    "-home",
+    action="store",
+    default=None,
+    help="Overrides owns_home input feature with 0 or 1. Defaults to None (doesn't change the original value)",
 )
 argparser.add_argument(
     "-phone",
     action="store",
     default=None,
-    help="Sets has_work_phone input feature to 1 or 0",
+    help="Overrides has_work_phone input feature with 0 or 1. Defaults to None (doesn't change the original value)",
 )
 
 args = argparser.parse_args()
