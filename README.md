@@ -81,14 +81,6 @@ Streamed data structure is as follows:
 ```
 
 ## How to generate load
-To simulate "usual times", run `python3 load.py all`
-This will send a mix set of credit card applications that will be approved or rejected.
-
-To simulate "unusual times", run `python3 load.py reject`
-This will only send credit card application requests that the algorithm will reject.
-
-To normalize the stats, run `python3 load.py approve`
-This will only send credit card application requests that the algorithm will approve.
 
 ```
 ❯ python3 load.py -h                                  
@@ -96,11 +88,27 @@ usage: load.py [-h] [-s S] [-v V] [-home HOME] [-phone PHONE]
 
 optional arguments:
   -h, --help    show this help message and exit
-  -s S          Data segment to use:all, approve or reject
-  -v V          Algorithm version to call
-  -home HOME    Sets owns_home input feature to 1 or 0
-  -phone PHONE  Sets has_work_phone input feature to 1 or 0
+  -s S          Data segment to use:all, approve or reject. Defaults to all
+  -v V          Algorithm version to call. Defaults to 0.1.1
+  -home HOME    Overrides owns_home input feature with 0 or 1. Defaults to None (doesn't change the original value)
+  -phone PHONE  Overrides has_work_phone input feature with 0 or 1. Defaults to None (doesn't change the original value)
+  -sleep SLEEP  Num of seconds to increase the duration of the algorithm. Defaults to 0
 ```
+
+### Examples
+To simulate "usual times", run `python3 load.py -s all`
+This will send a mix set of credit card applications that will be approved or rejected.
+
+To simulate "unusual times", run `python3 load.py -s reject`
+This will only send credit card application requests that the algorithm will reject.
+
+To normalize the stats, run `python3 load.py -s approve`
+This will only send credit card application requests that the algorithm will approve.
+
+
+This example sends a request to v0.1.4 of the algorithm, that approves all credit card applications, overrides the owns_home and has_work_phone input features with values "1" and makes the algorithm sleep for 2 seconds:
+`python3 load.py -s approve -v 0.1.4 -home 1 -phone 1 -sleep 2`
+
 
 
 ## Requirements

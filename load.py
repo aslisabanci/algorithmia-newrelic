@@ -27,6 +27,12 @@ argparser.add_argument(
     default=None,
     help="Overrides has_work_phone input feature with 0 or 1. Defaults to None (doesn't change the original value)",
 )
+argparser.add_argument(
+    "-sleep",
+    action="store",
+    default=0,
+    help="Num of seconds to increase the duration of the algorithm. Defaults to 0",
+)
 
 args = argparser.parse_args()
 print(vars(args))
@@ -36,6 +42,7 @@ while True:
     version = args.v
     owns_home = args.home
     has_work_phone = args.phone
+    sleep_seconds = args.sleep
 
     input_ds = pd.read_csv(f"./data/{to_load}.csv")
     print(input_ds.shape)
@@ -51,8 +58,11 @@ while True:
             record["owns_home"] = owns_home
         if has_work_phone is not None:
             record["has_work_phone"] = has_work_phone
+        record["sleep"] = int(sleep_seconds)
 
         result = algo.pipe(record).result
-        record_owns_home = record["owns_home"]
-        record_has_work_phone = record["has_work_phone"]
-        print(f"{result} from v{version}, {record_owns_home}, {record_has_work_phone}")
+        overridden_owns_home = record["owns_home"]
+        overridden_has_work_phone = record["has_work_phone"]
+        print(
+            f"{result} from v{version} sleeping for {sleep_seconds}s, overridden inputs: owns_home: {overridden_owns_home}, has_work_phone:{overridden_has_work_phone}"
+        )
