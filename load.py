@@ -71,5 +71,5 @@ while True:
         overridden_owns_home = record["owns_home"]
         overridden_has_work_phone = record["has_work_phone"]
         print(
-            f"{result} from v{version} sleeping for {sleep_seconds}s, overridden inputs: owns_home: {overridden_owns_home}, has_work_phone:{overridden_has_work_phone}"
+            f"{result} from v{version} of {algo_name} sleeping for {sleep_seconds}s, overridden inputs: owns_home: {overridden_owns_home}, has_work_phone:{overridden_has_work_phone}"
         )
