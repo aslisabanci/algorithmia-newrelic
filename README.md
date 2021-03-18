@@ -31,7 +31,7 @@ Streamed data structure is as follows:
     "value": 1,
     "type": "gauge",
     "attributes": {
-      "algorithm_name": "credit_card_approval",
+      "algorithm_name": "gradientboosting_creditcardapproval",
       "algorithm_version": "0.1.1",
       "algorithm_owner": "asli_algorithmia_trr",
       "request_id": "req-04c88db3-a0c1-4123-aaa1-6a096b59e4ec",
@@ -44,7 +44,7 @@ Streamed data structure is as follows:
     "value": 0.43,
     "type": "gauge",
     "attributes": {
-      "algorithm_name": "credit_card_approval",
+      "algorithm_name": "gradientboosting_creditcardapproval",
       "algorithm_version": "0.1.1",
       "algorithm_owner": "asli_algorithmia_trr",
       "request_id": "req-04c88db3-a0c1-4123-aaa1-6a096b59e4ec",
@@ -57,7 +57,7 @@ Streamed data structure is as follows:
     "value": 29,
     "type": "gauge",
     "attributes": {
-      "algorithm_name": "credit_card_approval",
+      "algorithm_name": "gradientboosting_creditcardapproval",
       "algorithm_version": "0.1.1",
       "algorithm_owner": "asli_algorithmia_trr",
       "request_id": "req-04c88db3-a0c1-4123-aaa1-6a096b59e4ec",
@@ -84,12 +84,13 @@ Streamed data structure is as follows:
 
 ```
 ❯ python3 load.py -h                                  
-usage: load.py [-h] [-s S] [-v V] [-home HOME] [-phone PHONE]
+usage: load.py [-h] [-s S] [-a A] [-v V] [-home HOME] [-phone PHONE] [-sleep SLEEP]
 
 optional arguments:
   -h, --help    show this help message and exit
   -s S          Data segment to use:all, approve or reject. Defaults to all
-  -v V          Algorithm version to call. Defaults to 0.1.1
+  -a A          Algorithm name to call
+  -v V          Algorithm version to call. Defaults to 0.1.0
   -home HOME    Overrides owns_home input feature with 0 or 1. Defaults to None (doesn't change the original value)
   -phone PHONE  Overrides has_work_phone input feature with 0 or 1. Defaults to None (doesn't change the original value)
   -sleep SLEEP  Num of seconds to increase the duration of the algorithm. Defaults to 0
@@ -106,8 +107,8 @@ To normalize the stats, run `python3 load.py -s approve`
 This will only send credit card application requests that the algorithm will approve.
 
 
-This example sends a request to v0.1.4 of the algorithm, that approves all credit card applications, overrides the owns_home and has_work_phone input features with values "1" and makes the algorithm sleep for 2 seconds:
-`python3 load.py -s approve -v 0.1.4 -home 1 -phone 1 -sleep 2`
+This example sends a request to v0.1.0 of the gradientboosting_creditcardapproval algorithm, that approves all credit card applications, overrides the owns_home and has_work_phone input features with values "1" and makes the algorithm sleep for 2 seconds:
+`python3 load.py -s approve -a gradientboosting_creditcardapproval -v 0.1.0 -home 1 -phone 1 -sleep 2`
 
 
 
