@@ -10,10 +10,16 @@ argparser.add_argument(
     help="Data segment to use:all, approve or reject. Defaults to all",
 )
 argparser.add_argument(
+    "-a",
+    action="store",
+    default="randomforest_creditcardapproval",
+    help="Algorithm name to call",
+)
+argparser.add_argument(
     "-v",
     action="store",
-    default="0.1.1",
-    help="Algorithm version to call. Defaults to 0.1.1",
+    default="0.1.0",
+    help="Algorithm version to call. Defaults to 0.1.0",
 )
 argparser.add_argument(
     "-home",
@@ -39,6 +45,7 @@ print(vars(args))
 
 while True:
     to_load = args.s
+    algo_name = args.a
     version = args.v
     owns_home = args.home
     has_work_phone = args.phone
@@ -50,7 +57,7 @@ while True:
     client = Algorithmia.client(
         "simqUvvKryCWCWgjihWcuGv7fro1", "https://api.therealreal.productionize.ai"
     )
-    algo = client.algo(f"asli_algorithmia_trr/credit_card_approval/{version}")
+    algo = client.algo(f"asli_algorithmia_trr/{algo_name}/{version}")
 
     records = input_ds.to_dict("records")
     for record in records:
