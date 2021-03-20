@@ -62,9 +62,9 @@ while True:
     records = input_ds.to_dict("records")
     for record in records:
         if owns_home is not None:
-            record["owns_home"] = owns_home
+            record["owns_home"] = int(owns_home)
         if has_work_phone is not None:
-            record["has_work_phone"] = has_work_phone
+            record["has_work_phone"] = int(has_work_phone)
         record["sleep"] = int(sleep_seconds)
 
         result = algo.pipe(record).result
