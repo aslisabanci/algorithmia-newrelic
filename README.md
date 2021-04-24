@@ -96,7 +96,9 @@ optional arguments:
   -sleep SLEEP  Num of seconds to increase the duration of the algorithm. Defaults to 0
 ```
 
-### Examples with defaults
+### Examples 
+
+#### Using defaults
 To simulate "usual times", run `python3 load.py -s all`
 This will send a mix set of credit card applications to randomforest_creditcardapproval algo, either to be approved or rejected.
 
@@ -106,7 +108,12 @@ This will only send credit card application requests that the randomforest_credi
 To normalize the stats, run `python3 load.py -s approve`
 This will only send credit card application requests that the randomforest_creditcardapproval algo will approve.
 
+### Loading a specific algo
+If you don't provide the algo name, it will default to randomforest_creditcardapproval.
+To send requests to gradientboosting_creditcardapproval, run: `python3 load.py -a gradientboosting_creditcardapproval`
+To send applications to reject, add the -s reject flag: `python3 load.py -s reject -a gradientboosting_creditcardapproval`
 
+### Overriding input features
 This example sends a request to v0.1.1 of the `gradientboosting_creditcardapproval` algorithm, that approves all credit card applications, overrides the owns_home and has_work_phone input features with values "1" and makes the algorithm sleep for 2 seconds:
 `python3 load.py -s approve -a gradientboosting_creditcardapproval -v 0.1.0 -home 1 -phone 1 -sleep 2`
 
