@@ -18,8 +18,8 @@ argparser.add_argument(
 argparser.add_argument(
     "-v",
     action="store",
-    default="0.1.0",
-    help="Algorithm version to call. Defaults to 0.1.0",
+    default="0.1.1",
+    help="Algorithm version to call. Defaults to 0.1.1",
 )
 argparser.add_argument(
     "-home",
@@ -44,14 +44,17 @@ args = argparser.parse_args()
 print(vars(args))
 
 while True:
-    to_load = args.s
+    segment = args.s
     algo_name = args.a
     version = args.v
     owns_home = args.home
     has_work_phone = args.phone
     sleep_seconds = args.sleep
 
-    input_ds = pd.read_csv(f"./data/{to_load}.csv")
+    data_file = segment
+    if segment != "all":
+        data_file = f"{algo_name}-{segment}"
+    input_ds = pd.read_csv(f"./data/{data_file}.csv")
     print(input_ds.shape)
 
     client = Algorithmia.client(

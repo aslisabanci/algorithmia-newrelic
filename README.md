@@ -89,25 +89,25 @@ usage: load.py [-h] [-s S] [-a A] [-v V] [-home HOME] [-phone PHONE] [-sleep SLE
 optional arguments:
   -h, --help    show this help message and exit
   -s S          Data segment to use:all, approve or reject. Defaults to all
-  -a A          Algorithm name to call
-  -v V          Algorithm version to call. Defaults to 0.1.0
+  -a A          Algorithm name to call. Defaults to randomforest_creditcardapproval
+  -v V          Algorithm version to call. Defaults to 0.1.1
   -home HOME    Overrides owns_home input feature with 0 or 1. Defaults to None (doesn't change the original value)
   -phone PHONE  Overrides has_work_phone input feature with 0 or 1. Defaults to None (doesn't change the original value)
   -sleep SLEEP  Num of seconds to increase the duration of the algorithm. Defaults to 0
 ```
 
-### Examples
+### Examples with defaults
 To simulate "usual times", run `python3 load.py -s all`
-This will send a mix set of credit card applications that will be approved or rejected.
+This will send a mix set of credit card applications to randomforest_creditcardapproval algo, either to be approved or rejected.
 
 To simulate "unusual times", run `python3 load.py -s reject`
-This will only send credit card application requests that the algorithm will reject.
+This will only send credit card application requests that the randomforest_creditcardapproval algo will reject.
 
 To normalize the stats, run `python3 load.py -s approve`
-This will only send credit card application requests that the algorithm will approve.
+This will only send credit card application requests that the randomforest_creditcardapproval algo will approve.
 
 
-This example sends a request to v0.1.0 of the gradientboosting_creditcardapproval algorithm, that approves all credit card applications, overrides the owns_home and has_work_phone input features with values "1" and makes the algorithm sleep for 2 seconds:
+This example sends a request to v0.1.1 of the `gradientboosting_creditcardapproval` algorithm, that approves all credit card applications, overrides the owns_home and has_work_phone input features with values "1" and makes the algorithm sleep for 2 seconds:
 `python3 load.py -s approve -a gradientboosting_creditcardapproval -v 0.1.0 -home 1 -phone 1 -sleep 2`
 
 
