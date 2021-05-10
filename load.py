@@ -18,8 +18,8 @@ argparser.add_argument(
 argparser.add_argument(
     "-v",
     action="store",
-    default="0.1.1",
-    help="Algorithm version to call. Defaults to 0.1.1",
+    default="0.1.0",
+    help="Algorithm version to call. Defaults to 0.1.0",
 )
 argparser.add_argument(
     "-home",
@@ -58,9 +58,9 @@ while True:
     print(input_ds.shape)
 
     client = Algorithmia.client(
-        "simqUvvKryCWCWgjihWcuGv7fro1", "https://api.therealreal.productionize.ai"
+        "simY73xk1582WI06j5CQCpddcJ/1", "https://api.devopsbay55.enthalpy.click"
     )
-    algo = client.algo(f"asli_algorithmia_trr/{algo_name}/{version}")
+    algo = client.algo(f"asli_org/{algo_name}/{version}")
 
     records = input_ds.to_dict("records")
     for record in records:
