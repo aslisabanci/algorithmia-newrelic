@@ -58,9 +58,9 @@ while True:
     print(input_ds.shape)
 
     client = Algorithmia.client(
-        "simqUvvKryCWCWgjihWcuGv7fro1", "https://api.therealreal.productionize.ai"
+        "simoXWEcOASC/jEP3JphD2bbf4+1", "https://api.mrcooper.productionize.ai"
     )
-    algo = client.algo(f"asli_algorithmia_trr/{algo_name}/{version}")
+    algo = client.algo(f"algorithmiaorg/{algo_name}/{version}")
 
     records = input_ds.to_dict("records")
     for record in records:
