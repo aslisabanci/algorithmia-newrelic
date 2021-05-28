@@ -18,8 +18,8 @@ argparser.add_argument(
 argparser.add_argument(
     "-v",
     action="store",
-    default="0.1.1",
-    help="Algorithm version to call. Defaults to 0.1.1",
+    default="0.1.0",
+    help="Algorithm version to call. Defaults to 0.1.0",
 )
 argparser.add_argument(
     "-home",
@@ -54,25 +54,26 @@ while True:
     data_file = segment
     if segment != "all":
         data_file = f"{algo_name}-{segment}"
-    input_ds = pd.read_csv(f"./data/{data_file}.csv")
-    print(input_ds.shape)
+    print(data_file)
+    # input_ds = pd.read_csv(f"./data/{data_file}.csv")
+    # print(input_ds.shape)
 
-    client = Algorithmia.client(
-        "simoXWEcOASC/jEP3JphD2bbf4+1", "https://api.mrcooper.productionize.ai"
-    )
-    algo = client.algo(f"algorithmiaorg/{algo_name}/{version}")
+    # client = Algorithmia.client(
+    #     "simoXWEcOASC/jEP3JphD2bbf4+1", "https://api.mrcooper.productionize.ai"
+    # )
+    # algo = client.algo(f"algorithmiaorg/{algo_name}/{version}")
 
-    records = input_ds.to_dict("records")
-    for record in records:
-        if owns_home is not None:
-            record["owns_home"] = int(owns_home)
-        if has_work_phone is not None:
-            record["has_work_phone"] = int(has_work_phone)
-        record["sleep"] = int(sleep_seconds)
+    # records = input_ds.to_dict("records")
+    # for record in records:
+    #     if owns_home is not None:
+    #         record["owns_home"] = int(owns_home)
+    #     if has_work_phone is not None:
+    #         record["has_work_phone"] = int(has_work_phone)
+    #     record["sleep"] = int(sleep_seconds)
 
-        result = algo.pipe(record).result
-        overridden_owns_home = record["owns_home"]
-        overridden_has_work_phone = record["has_work_phone"]
-        print(
-            f"{result} from v{version} of {algo_name} sleeping for {sleep_seconds}s, overridden inputs: owns_home: {overridden_owns_home}, has_work_phone:{overridden_has_work_phone}"
-        )
+    #     result = algo.pipe(record).result
+    #     overridden_owns_home = record["owns_home"]
+    #     overridden_has_work_phone = record["has_work_phone"]
+    #     print(
+    #         f"{result} from v{version} of {algo_name} sleeping for {sleep_seconds}s, overridden inputs: owns_home: {overridden_owns_home}, has_work_phone:{overridden_has_work_phone}"
+    #     )
