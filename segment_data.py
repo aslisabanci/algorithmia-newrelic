@@ -7,9 +7,9 @@ from pandas.core.frame import DataFrame
 
 if __name__ == "__main__":
     client = Algorithmia.client(
-        "simqUvvKryCWCWgjihWcuGv7fro1", "https://api.therealreal.productionize.ai"
+        "simY73xk1582WI06j5CQCpddcJ/1", "https://api.devopsbay55.enthalpy.click"
     )
-    algo = client.algo("asli_algorithmia_trr/gradientboosting_creditcardapproval/0.1.1")
+    algo = client.algo(f"asli_org/randomforest_creditcardapproval/0.1.0")
 
     # parquet_path = "/Users/aslisabanci/Downloads/clean-data.parquet"
     # clean_data_ds = pd.read_parquet(parquet_path)
@@ -35,8 +35,8 @@ if __name__ == "__main__":
 
     approved_ds = DataFrame.from_dict(approveds)
     rejected_ds = DataFrame.from_dict(rejecteds)
-    approved_ds.to_csv("gradientboosting_creditcardapproval-approve.csv")
-    rejected_ds.to_csv("gradientboosting_creditcardapproval-reject.csv")
+    approved_ds.to_csv("randomforest_creditcardapproval-approve.csv")
+    rejected_ds.to_csv("randomforest_creditcardapproval-reject.csv")
 
     # input = {
     # "owns_home": 1,
